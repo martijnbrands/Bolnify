@@ -1,0 +1,33 @@
+{
+  "name": "Bolnify",
+  "version": "1.0.2",
+  "manifest_version": 2,
+  "description": "Send the user a notification if they have sold something via Bol.com LVB stock",
+  "homepage_url": "https://bol.com",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "19": "assets/icons/icon19.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "browser_action":{
+    "default_popup": "popup.html",
+    "default_title": "Bolnify"
+  },
+  "options_page": "options.html",
+
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": true
+  },
+  "permissions": [
+    "notifications",
+    "storage", 
+    "alarms",
+    "https://login.bol.com/token?grant_type=client_credentials",
+    "https://api.bol.com/retailer/orders?fulfilment-method=FBB",
+    "https://api.bol.com/retailer/orders/*"
+  ]
+}

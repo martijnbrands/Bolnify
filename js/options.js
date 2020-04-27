@@ -1,0 +1,66 @@
+const settedNotificationSound = localStorage.getItem("NotificationSound");
+const settedNotificationTimer = localStorage.getItem("NotificationTimer");
+
+const testNotificationButton = document.getElementById("notification_buttton");
+const radios = document.getElementsByClassName("radio_input");
+const slider = document.getElementById("notification_slider");
+const slider_output = document.getElementById("slider_output");
+
+const saveSettingsButton = document.getElementById("saveSettings");
+
+saveSettingsButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  saveSettings();
+});
+
+slider_output.innerHTML = slider.value;
+
+slider.oninput = function () {
+  slider_output.innerHTML = `Notify me every ${this.value} minutes`;
+};
+
+checkSettedSettings();
+
+testNotificationButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  sendTestPushNotification();
+
+  if (settedNotificationSound != 0) {
+    notificationSound = new Audio(
+      `assets/notification_sound_${settedNotificationSound}.mp3`
+    );
+    notificationSound.play();
+  }
+});
+
+function saveSettings() {
+  localStorage.setItem("NotificationTimer", slider.value);
+  for (let index = 0; index < radios.length; index++) {
+    if (radios[index].checked === true) {
+      localStorage.setItem("NotificationSound", radios[index].value);
+    }
+  }
+  location.reload();
+  chrome.runtime.reload();
+}
+
+function checkSettedSettings() {
+  for (let index = 0; index < radios.length; index++) {
+    if (settedNotificationSound === radios[index].value) {
+      radios[index].checked = true;
+    }
+  }
+  slider.value = settedNotificationTimer;
+  slider_output.innerHTML = `Notify me every ${settedNotificationTimer} minutes`;
+}
+
+function sendTestPushNotification() {
+  var options = {
+    type: "basic",
+    title: `Test Notification`,
+    message: `This is to show you how a notification look like`,
+    iconUrl: "assets/bolnify_logo_small.svg",
+  };
+  chrome.notifications.create("notification", options);
+  chrome.notifications.clear("notification");
+}

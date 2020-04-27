@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolnify - Settings</title>
+</head>
+
+<body>
+    <header>
+        <img src="assets/bolnify_logo.svg" alt="Bolnify Logo" />
+        <h1>Settings</h1>
+
+    </header>
+    <section id="settings">
+        <form>
+            <div id="notifications" class="form_control">
+                <h2>Notification sound</h2>
+
+                <input class="radio_input" type="radio" name="notification" value="0">
+                <label class="radio">Off</label>
+
+                <input class="radio_input" type="radio" name="notification" value="1">
+                <label class="radio">Ka-Ching</label>
+                
+                <input class="radio_input" type="radio" name="notification" value="2">
+                <label class="radio">Here Comes The Money</label>
+
+            </div>
+
+            <div id="notifications_timer" class="form_control">
+                <h2>Notification timer</h2>
+                <p>Set the time for the extension to notify you <br>
+                    If set to 1 it will notify you everytime you have an new open order.</p>
+                <input type="range" min="1" max="60" class="slider" id="notification_slider">
+                <div id="slider_output"></div>
+
+            </div>
+
+            <div class="form_control">
+                <h2>Test Notification</h2>
+                <p>This will send you a test notification to check if you enabled notifications. <br>
+                    If a notification won't pop-up check your PC settings.</p>
+                <input id="notification_buttton" type="submit" value="Send Test Notification">
+                
+            </div>
+
+            <input id="saveSettings" type="submit" value="Save Settings">
+        </form>
+    </section>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            color: #fff;
+            text-align: center;
+            background: #0000a4;
+        }
+        header img{
+            width: 50%;
+        }
+        header h1{
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+        section#settings{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;     
+        }
+        section#settings form{
+            width: 100%;
+        }
+        section#settings .form_control{
+            width: 100%;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        section#settings .form_control h2{
+            padding-bottom: 10px;
+        }
+        .radio{
+            margin-right: 30px;
+        }
+        .slider {
+            -webkit-appearance: none;
+            margin: 15px 0;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;  
+            background: #d3d3d3;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%; 
+            background-color: #0000a4;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #0000a4;
+            cursor: pointer;
+        }
+        input[type="submit"] {
+            display: block;
+            background-color: #0000a4;
+            color: #fff;
+            font-size: 12px;
+            padding: 12px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+      }
+
+
+    </style>
+    <script src="js/options.js"></script>
+</body>
+
+</html>

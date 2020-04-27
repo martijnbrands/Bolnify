@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolnify</title>
+</head>
+
+<body>
+    <a href="options.html" class="settings" target="blank"><img src="assets/settings.svg" alt="settings"></a>
+    <header>
+      <img src="assets/bolnify_logo.svg" alt="Bolnify Logo" />
+      <p>
+        Send the user a notification if they have sold something via Bol.com LVB
+        stock
+      </p>
+    </header>
+
+    <section id="alert_box" class="alert_success">
+      <img src="assets/success_icon.svg" alt="success" />
+      <p>
+        You have succesfully connected to the Bol.com API! <br /><br />
+        A notification pops up on your screen when you make a new sale.
+      </p>
+      <input id="disconnect_button" type="submit" value="Disconnect" />
+      <span>This will remove your credentials from your localstorage</span>
+    </section>
+
+    <section id="alert_box" class="alert_warning">
+      <img src="assets/warning_icon.svg" alt="success" />
+      <p>Please provide valid credentials.</p>
+    </section>
+
+    <section id="connection_form">
+      <form>
+        <div class="form_control">
+          <input type="text" id="clientId" name="clientId" placeholder="Your client id" required />
+        </div>
+
+        <div class="form_control">
+          <input type="text" id="clientSecret" name="clientSecret" placeholder="Your client secret" required />
+        </div>
+
+        <input id="connect_button" type="submit" value="Connect" />
+        <span>Your data will only be stored locally</span>
+      </form>
+    </section>
+
+    <footer>
+      <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" /><a class="bmc-button"
+        target="_blank" href="https://www.buymeacoffee.com/MartijnBrands"><img
+          src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" /><span>Buy me a
+          coffee</span></a>
+    </footer>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 300px;
+      }
+
+      .settings{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+      .settings img{
+        width: 20px;
+        height: 20px;
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+        background: #0000a4;
+      }
+
+      header img {
+        width: 174px;
+        margin-bottom: 10px;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      section#alert_box {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      section#alert_box img {
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+      section#alert_box p {
+        color: #000;
+        font-size: 14px;
+        padding: 10px 0;
+      }
+
+      section#alert_box #disconnect_button {
+        background: #ccc;
+      }
+
+      section#alert_box span {
+        width: 80%;
+        font-size: 10px;
+        color: #b3b3b3;
+      }
+
+      section#connection_form form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      section#connection_form form .form_control {
+        width: 100%;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+      }
+
+      input[type="submit"] {
+        background-color: #0000a4;
+        color: #fff;
+        font-size: 12px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      form span {
+        font-size: 10px;
+        color: #b3b3b3;
+      }
+
+      footer {
+        display: flex;
+        justify-content: center;
+      }
+
+      .bmc-button {
+        padding: 7px 10px 7px 10px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-flex;
+        color: #333;
+        letter-spacing: 0.6px;
+        font-family: "Cookie", cursive;
+      }
+
+      .bmc-button img {
+        height: 20px;
+        width: 20px;
+        margin-bottom: 1px;
+        vertical-align: middle;
+      }
+
+      .bmc-button span {
+        margin-left: 5px;
+        font-size: 12px;
+      }
+    </style>
+    <script src="js/popup.js"></script>
+</body>
+
+</html>
