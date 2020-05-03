@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
     settedNotificationTimer === null ||
     settedNotificationTimer.length === 0
   ) {
-    chrome.alarms.create("Check New Order", { periodInMinutes: 1 });
+    chrome.alarms.create("Check New Order", { periodInMinutes: 5 });
   } else {
     chrome.alarms.create("Check New Order", {
       periodInMinutes: parseInt(settedNotificationTimer),
