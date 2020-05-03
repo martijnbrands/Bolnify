@@ -1,6 +1,6 @@
 {
   "name": "Bolnify",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "manifest_version": 2,
   "description": "Bolnify is a Google Chrome extension that sends users a desktop notification as soon as they have sold something through Bol.com LVB",
   "homepage_url": "https://bol.com",
