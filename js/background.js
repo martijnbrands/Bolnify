@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
     settedNotificationTimer === null ||
     settedNotificationTimer.length === 0
   ) {
-    chrome.alarms.create("Check New Order", { periodInMinutes: 5 });
+    chrome.alarms.create("Check New Order", { delayInMinutes: 0.1, periodInMinutes: 1 });
   } else {
     chrome.alarms.create("Check New Order", {
       periodInMinutes: parseInt(settedNotificationTimer),
@@ -82,7 +82,7 @@ async function checkForAccesToken() {
 
 async function getOpenOrders(access_token) {
   const openOrders = await fetch(
-    "https://api.bol.com/retailer/orders?fulfilment-method=FBB",
+    "https://api.bol.com/retailer-demo/orders?fulfilment-method=FBB",
     {
       method: "GET",
       mode: "cors",
@@ -105,7 +105,7 @@ async function getOpenOrders(access_token) {
 
 async function getSingleOrderData(access_token, orderId) {
   const singleOrder = await fetch(
-    `https://api.bol.com/retailer/orders/${orderId}`,
+    `https://api.bol.com/retailer-demo/orders/${orderId}`,
     {
       method: "GET",
       mode: "cors",
@@ -122,7 +122,7 @@ async function getSingleOrderData(access_token, orderId) {
     .then((data) => {
       let totalOrderPrice = [];
       data.orderItems.forEach((item) => {
-        totalOrderPrice.push(item.quantity * item.offerPrice);
+        totalOrderPrice.push(item.offerPrice);
       });
       totalOrderPrice = totalOrderPrice.reduce((a, b) => a + b, 0);
       return totalOrderPrice;
