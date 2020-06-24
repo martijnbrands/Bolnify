@@ -3,7 +3,7 @@
   "version": "1.1.5",
   "manifest_version": 2,
   "description": "Bolnify is een Google Chrome-extensie die gebruikers een melding stuurt zodra ze iets hebben verkocht via Bol.com LVB.",
-  "homepage_url": "https://bol.com",
+  "homepage_url": "https://www.facebook.com/Bolnify/",
   "icons": {
     "16": "assets/icons/icon16.png",
     "19": "assets/icons/icon19.png",
