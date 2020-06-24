@@ -5,18 +5,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bolnify</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <a href="options.html" class="settings" target="blank"><img src="assets/settings.svg" alt="settings"></a>
+    
     <header>
-      <img src="assets/bolnify_logo.svg" alt="Bolnify Logo" />
-      <p>
-        Bolnify is a Google Chrome extension that sends users a desktop notification as soon as they have sold something through Bol.com LVB
-      </p>
+      <img src="assets/images/bolnify_logo.svg" alt="Bolnify Logo" />
+      <a href="options.html" class="settings" target="blank"><img src="assets/images/settings.svg" alt="settings"></a>
     </header>
 
-    <section id="alert_box" class="alert_success">
+    <main>
+      <section id="login_view">
+        <img src="assets/images/login_image.svg" alt="Bolnify Login">
+        <h1>Login</h1>
+        <p>Login met je Bol.com API credentials</p>
+      </section>
+
+      <section id="connected_view">
+        <img src="assets/images/success_image.svg" alt="Bolnify Login">
+        <h1>Verbonden</h1>
+        <p>Succesvol verbonden met de<br>bol.com API.<br><br> Zodra er een nieuwe LVB bestelling is<br>verschijnt er een notificatie.</p>
+        <input id="disconnect_button" class="default_button" type="submit" value="Disconnect" />
+      </section>
+
+      <section id="warning_view">
+        <img src="assets/images/warning_image.svg" alt="Bolnify Login">
+        <h1>Niet verbonden</h1>
+        <p>Helaas kan er op dit moment geen<br>verbinding worden gemaakt.<br>Probeer het later nog eens.</p>
+      </section>
+
+      <section id="connection_form">
+        <form>
+          <div class="form_control">
+            <input type="text" id="clientId" name="clientId" placeholder="Client ID" required />
+          </div>
+  
+          <div class="form_control">
+            <input type="text" id="clientSecret" name="clientSecret" placeholder="Client Secret" required />
+          </div>
+  
+          <input id="connect_button" class="default_button" type="Submit" value="Connect" />
+        </form>
+      </section>
+    </main>
+
+    <!-- <section id="alert_box" class="alert_success">
       <img src="assets/success_icon.svg" alt="success" />
       <p>
         You have succesfully connected to the Bol.com API! <br /><br />
@@ -29,9 +63,9 @@
     <section id="alert_box" class="alert_warning">
       <img src="assets/warning_icon.svg" alt="success" />
       <p>Please provide valid credentials.</p>
-    </section>
+    </section> -->
 
-    <section id="connection_form">
+    <!-- <section id="connection_form">
       <form>
         <div class="form_control">
           <input type="text" id="clientId" name="clientId" placeholder="Your client id" required />
@@ -41,10 +75,9 @@
           <input type="text" id="clientSecret" name="clientSecret" placeholder="Your client secret" required />
         </div>
 
-        <input id="connect_button" type="submit" value="Connect" />
-        <span>Your data will only be stored locally</span>
+        <input id="connect_button" class="default_button" type="submit" value="Connect" />
       </form>
-    </section>
+    </section> -->
 
     <footer>
       <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" /><a class="bmc-button"
@@ -53,6 +86,13 @@
           coffee</span></a>
     </footer>
     <style>
+      :root{
+        --primary-color: #6C63FF;
+        --title-color: #000;
+        --title-size: 14px;
+        --paragraph-color: #C2C2C2;
+        --paragraph-size: 12px;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -61,106 +101,116 @@
 
       body {
         width: 300px;
+        padding: 10px;
+        font-family: 'Poppins', sans-serif;
+      }
+      /*  
+      DEFAULT STYLING
+      */
+      h1{
+        font-size: var(--title-size);
+        color: var(--title-color-color);
+        font-weight: 700;
+        line-height: 21px;
+        margin-bottom: 5px;
+      }
+      p{
+        font-size: var(--paragraph-size);
+        color: var(--paragraph-color);
+        font-weight: 400;
+        line-height: 18px;
+      }
+      .default_button{
+        min-width: 150px;
+        min-height: 37px;
+        padding: 10px 40px;
+        border: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        box-shadow: 0px 4px 10px #6C63FF;
+        border-radius: 18px;
+        background: var(--primary-color);
+      }
+      /*  
+      HEADER
+      */
+      header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      header img{
+        width: 80px;
       }
 
       .settings{
         position: absolute;
-        top: 5px;
-        right: 5px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 50%;
+        background: var(--primary-color);
       }
       .settings img{
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
       }
-
-      header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        color: #fff;
-        text-align: center;
-        background: #0000a4;
-      }
-
-      header img {
-        width: 174px;
-        margin-bottom: 10px;
-      }
-
-      section {
-        padding: 20px;
-      }
-
-      section#alert_box {
+      /*  
+      CONTENT SECTION
+      */
+      #connected_view, #warning_view{
         display: none;
-        flex-direction: column;
-        align-items: center;
+      }
+      section{
         text-align: center;
       }
-
-      section#alert_box img {
-        width: 100px;
-        margin-bottom: 10px;
+      section img{
+        margin-bottom: 15px;
       }
-
-      section#alert_box p {
-        color: #000;
-        font-size: 14px;
-        padding: 10px 0;
+      /*  
+      FORM
+      */
+      form{
+        margin-top: 10px;
       }
-
-      section#alert_box #disconnect_button {
-        background: #ccc;
-      }
-
-      section#alert_box span {
-        width: 80%;
-        font-size: 10px;
-        color: #b3b3b3;
-      }
-
-      section#connection_form form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      section#connection_form form .form_control {
-        width: 100%;
-      }
-
       input[type="text"],
       input[type="password"],
       select {
         width: 100%;
+        max-width: 250px;
         padding: 12px 20px;
         margin: 10px 0;
         display: inline-block;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
+        outline: 0;
         border-radius: 20px;
+        font-size: 10px;
+        color: var(--paragraph-color);
       }
-
-      input[type="submit"] {
-        background-color: #0000a4;
-        color: #fff;
-        font-size: 12px;
-        padding: 12px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 20px;
+      ::placeholder{
+        color: var(--paragraph-color);
+      }
+      input[type="submit"]{
+        margin-top: 20px;
+      }
+      input[type="submit"]:hover{
         cursor: pointer;
       }
 
-      form span {
-        font-size: 10px;
-        color: #b3b3b3;
-      }
-
+      /*  
+      FOOTER
+      */
       footer {
         display: flex;
         justify-content: center;
+        margin-top: 30px;
       }
 
       .bmc-button {

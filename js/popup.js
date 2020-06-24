@@ -2,8 +2,9 @@ const loginForm = document.getElementById("connection_form");
 const clientId = document.getElementById("clientId");
 const clientSecret = document.getElementById("clientSecret");
 
-const alertBoxSuccess = document.getElementsByClassName("alert_success")[0];
-const alertBoxWarning = document.getElementsByClassName("alert_warning")[0];
+const loginView = document.getElementById("login_view");
+const connectView = document.getElementById("connected_view");
+const warningView = document.getElementById("warning_view");
 
 const connectButton = document.getElementById("connect_button");
 const disconnectButton = document.getElementById("disconnect_button");
@@ -25,8 +26,9 @@ disconnectButton.addEventListener("click", function (e) {
 });
 
 if ("ClientId" in localStorage) {
+  loginView.style.display = "none";
   loginForm.style.display = "none";
-  alertBoxSuccess.style.display = "flex";
+  connectView.style.display = "block";
 } else {
   loginForm.style.display = "block";
 }
@@ -45,11 +47,15 @@ function setTemporaryClientSecret() {
 
 function disconnect() {
   localStorage.clear();
+  loginView.style.display = "block";
+  loginForm.style.display = "block";
+  connectView.style.display = "none";
 }
 
 function connect() {
   if (clientId.value.length === 0 || clientSecret.value.length === 0) {
-    alertBoxWarning.style.display = "flex";
+    loginView.style.display = "none";
+    warningView.style.display = "block";
   } else {
     const token = window.btoa(clientId.value + ":" + clientSecret.value);
 
@@ -65,11 +71,12 @@ function connect() {
         localStorage.setItem("ClientSecret", clientSecret.value);
         localStorage.removeItem("TempClientId");
         localStorage.removeItem("TempClientSecret");
-        alertBoxWarning.style.display = "none";
+        warningView.style.display = "none";
+        loginView.style.display = "none";
         loginForm.style.display = "none";
-        alertBoxSuccess.style.display = "flex";
+        connectView.style.display = "block";
       } else {
-        alertBoxWarning.style.display = "flex";
+        warningView.style.display = "block";
       }
     });
   }
