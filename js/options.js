@@ -57,8 +57,8 @@ function checkSettedSettings() {
 function sendTestPushNotification() {
   var options = {
     type: "basic",
-    title: `Test Notification`,
-    message: `This is to show you how a notification look like`,
+    title: `Nieuwe bestelling (Test)`,
+    message: `Hier komt de waarde van de bestelling te staan.`,
     iconUrl: "assets/icons/icon128.png",
   };
   chrome.notifications.create("notification", options);
