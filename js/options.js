@@ -27,7 +27,7 @@ testNotificationButton.addEventListener("click", function (e) {
 
   if (settedNotificationSound != 0) {
     notificationSound = new Audio(
-      `assets/notification_sound_${settedNotificationSound}.mp3`
+      `assets/sounds/notification_sound_${settedNotificationSound}.mp3`
     );
     notificationSound.play();
   }
@@ -59,7 +59,7 @@ function sendTestPushNotification() {
     type: "basic",
     title: `Test Notification`,
     message: `This is to show you how a notification look like`,
-    iconUrl: "assets/bolnify_logo_small.svg",
+    iconUrl: "assets/icons/icon128.png",
   };
   chrome.notifications.create("notification", options);
   chrome.notifications.clear("notification");
