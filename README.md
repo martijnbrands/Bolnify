@@ -1,43 +1,44 @@
 Bolnify
 =====================
 
-Bolnify is a Google Chrome extension that sends users a desktop notification as soon as they have sold something through Bol.com LVB
+Bolnify is een Google Chrome-extensie die gebruikers een melding stuurt zodra ze iets hebben verkocht via Bol.com LVB.
 
-![Bolnify](https://lh3.googleusercontent.com/cfyi2H7muM9c70XEdmaRnd3llNX1-SAAGZvyh0qmo7n21mejv624p6naETiJfPOVy8DbmKHs=w640-h400-e3650)
+![Bolnify](https://lh3.googleusercontent.com/-TPvtaH-jw0yXcU3E_3JmW5zLCba381Avr_ebpwW0JNLfqfYz2eQgpnELv0ASwc41vi75B7Kug=w472-h300-rw)
 
-# Requirements
+# Vereisten
   - Chrome for desktop release 35
 
-# Features
+# Functionaliteiten
 
-Bolnify provides many features such as:
-  - **Notification sound** - Choose between two sounds (Ka-Ching, Here comes the money ) or turn off the sound completely.
-  - **Notification timer** - Set the timeinterval for the notification to popup.
+Bolnify biedt vele mogelijkheden zoals:
+  - **Notificatie geluid** -  Kies tussen twee geluiden (Ka-Ching, Here Comes The Money) of zet het geluid uit.
+  - **Notificatie interval** - Stel een tijdsinterval in voor de meldingen.
 
-# Coming soon
-Features that will be added in the future:
-  - **Return support**
+# Binnenkort
+Functies die in de toekomst zullen worden toegevoegd:
+  - **Retour meldingen**
+  - **Meldingen voor eigen levering**
 
-# Installation
+# Installatie
 
-You can download the extension on the Chrome Web Store [here](https://chrome.google.com/webstore/detail/bolnify/gjabfpbecbaoniepddfoijdbfjgfdbid).
+Je kunt de extensie downloaden in de Chrome Web Store. [hier](https://chrome.google.com/webstore/detail/bolnify/gjabfpbecbaoniepddfoijdbfjgfdbid).
 
-Or you can also download the latest release [here](https://github.com/martijnbrands/Bolnify/releases).
+Of download de laatste versie [here](https://github.com/martijnbrands/Bolnify/releases).
 
-Once it's done, follow these steps:
-  >- Extract the downloaded release to a folder of your choice.
-  >- Open Google Chrome and type in your address bar **chrome://extensions/** and enable the **Developer** mode option at the top of the page.
-  >- Drag the extracted folder containing the extension into Google Chrome.
+Als de download klaar is, volg dan deze stappen:
+  >- Pak de gedownloade versie uit in een map naar keuze.
+  >- Open Google Chrome en typ in de adresbalk **chrome://extensions/** en schakel de optie **Developer** modus in bovenin de pagina.
+  >- Sleep de uitgepakte map met de extensie in Google Chrome.
 
-# Configuration
+# Configuratie
 
-After the extension is installed, the extension logo should appear on the Chrome menu.
+Nadat de extensie is geïnstalleerd, verschijnt het logo van de extensie in het Chrome-menu.
 
-Make sure to set your Bol.com API keys in the required option fields otherwise the extension won't work.
+Zorg ervoor dat je de Bol.com API-sleutels in de vereiste optievelden invult, anders werkt de extensie niet.
 
-You can adjust your desired settings by clicking on the gear icon in the top right corner.
+Je kunt de gewenste notificatie voorkeuren aanpassen door te klikken op het tandwielicoontje in de rechterbovenhoek.
 
-## Donation
-This project will always be supported for free but any donation would be greatly appreciated!
+## Donaties
+Deze plugin is volledig gratis te gebruiken, maar elke donatie wordt zeer op prijs gesteld!
 
 <a href="https://www.buymeacoffee.com/MartijnBrands" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a>
