@@ -46,7 +46,7 @@ async function bolnify() {
       sendPushNotification(newOpenOrders, TotalOrderToNotify);
       if (settedNotificationSound != 0) {
         notificationSound = new Audio(
-          `assets/notification_sound_${settedNotificationSound}.mp3`
+          `assets/sounds/notification_sound_${settedNotificationSound}.mp3`
         );
         notificationSound.play();
       }
