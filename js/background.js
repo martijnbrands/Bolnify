@@ -166,8 +166,8 @@ function checkIfOpenOrderExcist() {
 function sendPushNotification(totalOrderNumbers, totalOrderPrice) {
   var options = {
     type: "basic",
-    title: `You have ${totalOrderNumbers.length} new order(s)`,
-    message: `💰 With a total value of €${totalOrderPrice.toFixed(2)}`,
+    title: `Je hebt ${totalOrderNumbers.length} nieuwe bestelling(en)`,
+    message: `💰 De totale waarde is €${totalOrderPrice.toFixed(2)}`,
     iconUrl: "assets/icons/icon48.png",
   };
   chrome.notifications.create("notification", options);
