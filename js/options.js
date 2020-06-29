@@ -7,16 +7,21 @@ const slider = document.getElementById("notification_slider");
 const slider_output = document.getElementById("slider_output");
 
 const saveSettingsButton = document.getElementById("saveSettings");
+const cancelButton = document.getElementById("cancelSettings");
 
 saveSettingsButton.addEventListener("click", function (e) {
   e.preventDefault();
   saveSettings();
 });
+cancelButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  window.close();
+});
 
 slider_output.innerHTML = slider.value;
 
 slider.oninput = function () {
-  slider_output.innerHTML = `Notify me every ${this.value} minutes`;
+  slider_output.innerHTML = `Stuur een notificatie om de ${this.value} minuten`;
 };
 
 checkSettedSettings();
@@ -51,7 +56,7 @@ function checkSettedSettings() {
     }
   }
   slider.value = settedNotificationTimer;
-  slider_output.innerHTML = `Notify me every ${settedNotificationTimer} minutes`;
+  slider_output.innerHTML = `Stuur een notificatie om de ${settedNotificationTimer} minuten`;
 }
 
 function sendTestPushNotification() {
