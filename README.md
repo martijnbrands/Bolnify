@@ -21,7 +21,7 @@ Functies die in de toekomst zullen worden toegevoegd:
 
 # Installatie
 
-Je kunt de extensie downloaden in de Chrome Web Store. [hier](https://chrome.google.com/webstore/detail/bolnify/gjabfpbecbaoniepddfoijdbfjgfdbid).
+Je kunt de extensie downloaden in de [Chrome Web Store.](https://chrome.google.com/webstore/detail/bolnify/gjabfpbecbaoniepddfoijdbfjgfdbid).
 
 Of download de laatste versie [here](https://github.com/martijnbrands/Bolnify/releases).
 
