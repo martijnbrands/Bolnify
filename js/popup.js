@@ -76,6 +76,7 @@ function connect() {
         loginForm.style.display = "none";
         connectView.style.display = "block";
       } else {
+        loginView.style.display = "none";
         warningView.style.display = "block";
       }
     });
