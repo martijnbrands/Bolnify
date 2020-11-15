@@ -6,6 +6,9 @@ const loginView = document.getElementById("login_view");
 const connectView = document.getElementById("connected_view");
 const warningView = document.getElementById("warning_view");
 
+const outOfStockAlert = document.getElementById("out_of_stock_alert");
+const outOfStockText = document.getElementById("out_of_stock_text")
+
 const connectButton = document.getElementById("connect_button");
 const disconnectButton = document.getElementById("disconnect_button");
 
@@ -14,6 +17,10 @@ clientSecret.value = localStorage.getItem("TempClientSecret");
 
 setTemporaryClientId();
 setTemporaryClientSecret();
+
+if ("OutOfStockItems" in localStorage) {
+  showInventory()
+}
 
 connectButton.addEventListener("click", function (e) {
   e.preventDefault();
@@ -45,6 +52,18 @@ function setTemporaryClientSecret() {
   });
 }
 
+function showInventory(){
+  let outOfStockItems = JSON.parse(localStorage.getItem("OutOfStockItems"))
+  
+  if (outOfStockItems && outOfStockItems.length > 0 ) {
+    outOfStockAlert.style.display = "flex"
+    outOfStockText.innerHTML = `Let op! Op dit momement is/zijn er ${outOfStockItems.length} producten niet op voorraad.`
+  }
+  else{
+    outOfStockAlert.style.display = "none"
+  }
+}
+
 function disconnect() {
   localStorage.clear();
   loginView.style.display = "block";
@@ -62,7 +81,7 @@ function connect() {
     fetch("https://login.bol.com/token?grant_type=client_credentials", {
       method: "POST",
       headers: {
-        Accept: "application/vnd.retailer.v3+json",
+        Accept: "application/vnd.retailer.v4+json",
         Authorization: `Basic ${token}`,
       },
     }).then((response) => {

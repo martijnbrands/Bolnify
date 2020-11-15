@@ -22,11 +22,17 @@
         <p>Login met je Bol.com API credentials</p>
       </section>
 
+      <div id="out_of_stock_alert">
+        <img src="assets/images/alert_circle.svg" alt="Waarschuwing">
+        <p id="out_of_stock_text">Let op er zijn op dit moment 2 producten niet op voorraad!</p>
+      </div>
+
       <section id="connected_view">
         <img src="assets/images/success_image.svg" alt="Bolnify Login">
         <h1>Verbonden</h1>
         <p>Succesvol verbonden met de<br>bol.com API.<br><br> Zodra er een nieuwe LVB bestelling is<br>verschijnt er een notificatie.</p>
         <input id="disconnect_button" class="default_button" type="submit" value="Disconnect" />
+       
       </section>
 
       <section id="warning_view">
@@ -62,6 +68,7 @@
         --title-size: 14px;
         --paragraph-color: #C2C2C2;
         --paragraph-size: 12px;
+        --warning-color: 255, 122, 0;
       }
       * {
         margin: 0;
@@ -173,7 +180,27 @@
       input[type="submit"]:hover{
         cursor: pointer;
       }
-
+      /*  
+      OUT OF STOCK ALERT
+      */
+      #out_of_stock_alert{
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        background: rgba(var(--warning-color),0.2);
+        border-left: 2px solid rgb(var(--warning-color));
+        text-align: left;
+        padding: 12px;
+        margin-bottom: 30px;
+      }
+      #out_of_stock_alert img{
+        display: block;
+        margin-right: 12px;
+        margin-bottom: 0;
+      }
+      #out_of_stock_alert p{
+        color: rgb(var(--warning-color))
+      }
       /*  
       FOOTER
       */

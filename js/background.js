@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
     settedNotificationTimer === null ||
     settedNotificationTimer.length === 0
   ) {
-    chrome.alarms.create("Check New Order", { periodInMinutes: 5 });
+    chrome.alarms.create("Check New Order", { delayInMinutes: 0.1, periodInMinutes: 5 });
   } else {
     chrome.alarms.create("Check New Order", {
       periodInMinutes: parseInt(settedNotificationTimer),
@@ -31,6 +31,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 async function bolnify() {
   const bearerToken = await checkForAccesToken();
   const openOrders = await getOpenOrders(bearerToken);
+  getInventory(bearerToken)
 
   if (openOrders) {
     saveNewOpenOrders(openOrders);
@@ -64,7 +65,7 @@ async function checkForAccesToken() {
     {
       method: "POST",
       headers: {
-        Accept: "application/vnd.retailer.v3+json",
+        Accept: "application/vnd.retailer.v4+json",
         Authorization: `Basic ${token}`,
       },
     }
@@ -88,7 +89,7 @@ async function getOpenOrders(access_token) {
       mode: "cors",
       headers: {
         Authorization: `Bearer ${access_token}`,
-        Accept: "application/vnd.retailer.v3+json",
+        Accept: "application/vnd.retailer.v4+json",
         "Content-Type": "application/json",
       },
     }
@@ -111,7 +112,7 @@ async function getSingleOrderData(access_token, orderId) {
       mode: "cors",
       headers: {
         Authorization: `Bearer ${access_token}`,
-        Accept: "application/vnd.retailer.v3+json",
+        Accept: "application/vnd.retailer.v4+json",
         "Content-Type": "application/json",
       },
     }
@@ -122,7 +123,7 @@ async function getSingleOrderData(access_token, orderId) {
     .then((data) => {
       let totalOrderPrice = [];
       data.orderItems.forEach((item) => {
-        totalOrderPrice.push(item.offerPrice);
+        totalOrderPrice.push(item.unitPrice);
       });
       totalOrderPrice = totalOrderPrice.reduce((a, b) => a + b, 0);
       return totalOrderPrice;
@@ -149,7 +150,7 @@ function checkIfOpenOrderExcist() {
     // Check if database excist
     localStorage.setItem("oldOrders", JSON.stringify([]));
   } else {
-    // Check if new order already has benn notified
+    // Check if new order already has been notified
     newOrders.forEach((order) => {
       let checkIfNotified = oldOrders.includes(order); // Check if new order exsist in storage
       if (checkIfNotified === true) {
@@ -161,6 +162,45 @@ function checkIfOpenOrderExcist() {
     });
   }
   return newOpenOrders;
+}
+
+
+async function getInventory (access_token){
+  let outOfStockItems = []
+  const inventory = await fetch(
+    "https://api.bol.com/retailer/inventory",
+    {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        Accept: "application/vnd.retailer.v4+json",
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      data.inventory.forEach(inventoryItem => {
+        if (inventoryItem.regularStock === 0) {
+          outOfStockItems.push(inventoryItem.ean)
+        }
+      })      
+    })
+    .catch((err) => console.error(err));
+    if (outOfStockItems.length > 0) {
+      localStorage.setItem("OutOfStockItems", JSON.stringify(outOfStockItems));
+      chrome.browserAction.setBadgeBackgroundColor({ color: "#FF7A00" });
+      chrome.browserAction.setBadgeText({text: outOfStockItems.length.toString()});
+    }
+    else{
+      localStorage.removeItem("OutOfStockItems");
+      chrome.browserAction.setBadgeText({text: ""});
+    }
+   
+  return inventory;
 }
 
 function sendPushNotification(totalOrderNumbers, totalOrderPrice) {
