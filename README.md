@@ -1,4 +1,4 @@
-Bolnify
+Bolnify - Notificaties voor bol.com
 =====================
 
 Bolnify is een Google Chrome-extensie die gebruikers een melding stuurt zodra ze een product hebben verkocht via Bol.com LVB.
@@ -21,9 +21,9 @@ Functies die in de toekomst zullen worden toegevoegd:
 
 # Installatie
 
-Je kunt de extensie downloaden in de [Chrome Web Store.](https://chrome.google.com/webstore/detail/bolnify/gjabfpbecbaoniepddfoijdbfjgfdbid).
+Je kunt de extensie downloaden in de [Chrome Web Store](https://chrome.google.com/webstore/detail/bolnify/gjabfpbecbaoniepddfoijdbfjgfdbid).
 
-Of download de laatste versie [here](https://github.com/martijnbrands/Bolnify/releases).
+Of download de laatste versie [hier](https://github.com/martijnbrands/Bolnify/releases).
 
 Als de download klaar is, volg dan deze stappen:
   >- Pak de gedownloade versie uit in een map naar keuze.
